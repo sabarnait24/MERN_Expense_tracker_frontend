@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const apiSlice = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: "https://mern-expense-tracker-tawny.vercel.app" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "https://expense-api-7k7d.onrender.com" }),
   endpoints: (builder) => ({
     getTransaction: builder.query({
       query: () => "/api/transactions",
