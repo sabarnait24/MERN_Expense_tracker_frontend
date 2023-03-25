@@ -9,7 +9,7 @@ function Loginpage() {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const postLogin = (data) => {
-    fetch("http://localhost:5000/api/login", {
+    fetch("https://expense-api-7k7d.onrender.com/api/login", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

@@ -10,7 +10,7 @@ function Registerpage() {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/api/register", {
+    fetch("https://expense-api-7k7d.onrender.com/api/register", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
