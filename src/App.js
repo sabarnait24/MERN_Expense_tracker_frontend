@@ -41,7 +41,7 @@ function App() {
             </AuthorizeUser>
           }
         ></Route>
-        <Route path="/*" element={<PageNotFound />}></Route>
+        <Route path="https://expense-tracker-f7t0.onrender.com/*" element={<PageNotFound />}></Route>
       </Routes>
     </BrowserRouter>
   );
