@@ -1,24 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { getLabels } from "../calculation/calculation";
-import { default as api } from "../store/apiSlice";
-
 
 export default function Labels() {
-  const { data, isFetching, isSuccess, isError } = api.useGetTransactionQuery();
+  const [data, setData] = useState("");
+  const getTransaction = () => {
+    fetch("http://localhost:5000/api/v1/transactions", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+        authorization: localStorage.getItem("token"),
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((result) => {
+        console.log(result);
+        setData(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    // return data;
+  };
+  useEffect(() => {
+    getTransaction();
+  }, []);
   let Percentdata;
 
-  if (isFetching) {
-    Percentdata = <div>Fetching</div>;
-  } else if (isSuccess) {
-    // console.log(getLabels(data, "type"));
+  if (!data) {
+    Percentdata = <div>Error</div>;
+  } else {
     Percentdata = getLabels(data, "type").map((v, i) => (
       <LabelComponent key={i} data={v}></LabelComponent>
     ));
-  } else if (isError) {
-    Percentdata = <div>Error</div>;
   }
 
-  return <>{Percentdata}</>;
+  return <div>{Percentdata}</div>;
 }
 
 function LabelComponent({ data }) {
