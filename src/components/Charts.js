@@ -13,7 +13,7 @@ function Charts() {
   const [seed, setSeed] = useState(1);
   const getTransaction=()=>{
     // let data;
-      fetch("http://localhost:5000/api/v1/transactions", {
+      fetch("https://expense-api-7k7d.onrender.com/api/v1/transactions", {
           method: "GET",
           headers: {
             "Content-type": "application/json",

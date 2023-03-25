@@ -4,7 +4,7 @@ import { getLabels } from "../calculation/calculation";
 export default function Labels() {
   const [data, setData] = useState("");
   const getTransaction = () => {
-    fetch("http://localhost:5000/api/v1/transactions", {
+    fetch("https://expense-api-7k7d.onrender.com/api/v1/transactions", {
       method: "GET",
       headers: {
         "Content-type": "application/json",

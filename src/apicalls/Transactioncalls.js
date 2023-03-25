@@ -1,5 +1,5 @@
 const addTransaction = (data) => {
-  fetch("http://localhost:5000/api/transactions", {
+  fetch("https://expense-api-7k7d.onrender.com/api/transactions", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
@@ -18,7 +18,7 @@ const addTransaction = (data) => {
     });
 };
 const deleteTransaction = (id) => {
-  fetch(`http://localhost:5000/api/transactions/${id}`, {
+  fetch(`https://expense-api-7k7d.onrender.com/api/transactions/${id}`, {
     method: "DELETE",
     headers: {
       authorization: localStorage.getItem("token"),
