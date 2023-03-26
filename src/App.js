@@ -31,8 +31,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Loginpage />}></Route>
-        <Route path="/register" element={<Registerpage />}></Route>
+        <Route path="/" element={<Loginpage/>}></Route>
+        <Route path="/register" element={<Registerpage/>}></Route>
         <Route
           path="/profile"
           element={
