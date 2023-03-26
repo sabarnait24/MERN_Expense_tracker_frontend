@@ -1,6 +1,4 @@
-// import React from 'react'
 import React from "react";
-// import { Footer } from "react-daisyui";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
@@ -52,13 +50,13 @@ function Registerpage() {
                   {...register("email")}
                 />
                 <input
-                  type="text"
+                  type="password"
                   placeholder="password"
                   className="input input-bordered w-full max-w-xs bg-slate-100 my-2 mx-2 text-black"
                   {...register("password")}
                 />
                 <input
-                  type="text"
+                  type="password"
                   placeholder="confirm password"
                   className="input input-bordered w-full max-w-xs bg-slate-100 my-2 mx-2 text-black"
                   {...register("cpassword")}

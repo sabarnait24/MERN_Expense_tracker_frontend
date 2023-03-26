@@ -1,5 +1,5 @@
 // import React from 'react'
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
@@ -37,14 +37,7 @@ function Loginpage() {
   const onSubmit = (data) => {
     postLogin(data);
   };
-  const [passwordType, setPasswordType] = useState("password");
-  const togglePassword = () => {
-    if (passwordType === "password") {
-      setPasswordType("text");
-      return;
-    }
-    setPasswordType("password");
-  };
+
   return (
     <>
       {/* <div> */}
@@ -66,25 +59,17 @@ function Loginpage() {
                 />
                 <div className="">
                   <input
-                    type={passwordType}
+                    type="password"
                     className="input input-bordered w-full max-w-xs bg-slate-100 my-2 mx-2 text-black"
                     placeholder="Password"
                     {...register("password")}
                   />
-                  {/* <div className="flex justify-end mx-2">
-                    <button
-                      type="button"
-                      className="btn btn-warning"
-                      onClick={togglePassword}
-                    >
-                      {passwordType === "password" ? "Show" : "Hide"}
-                    </button>
-                  </div> */}
                 </div>
 
                 <div className="card-actions max-w-full flex items-center justify-around pt-10">
-                  <a className="link link-primary" href="/register">New User ? Register Here</a>
-
+                  <a className="link link-primary" href="/register">
+                    New User ? Register Here
+                  </a>
                   <button type="submit" className="btn btn-primary my-2">
                     Submit
                   </button>
@@ -94,9 +79,7 @@ function Loginpage() {
           </div>
         </form>
       </div>
-      {/* <div> */}
       <Footer></Footer>
-      {/* </div> */}
     </>
   );
 }
