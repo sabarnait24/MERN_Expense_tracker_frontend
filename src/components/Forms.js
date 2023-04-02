@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { addTransaction } from "../apicalls/Transactioncalls";
+import { toast } from "react-toastify";
 
 import History from "./History";
 
@@ -11,8 +12,10 @@ export default function Form() {
   const onSubmit = async (data) => {
     // console.log(data);
     if (!data) return {};
+    
     addTransaction(data);
     setSeed(Math.random());
+    toast.success("Updated successfully")
     // resetField("type");
     resetField("amount");
     resetField("about");
@@ -20,6 +23,8 @@ export default function Form() {
 
   return (
     <div className="">
+
+      
       <div className="form max-w-sm mx-auto w-96 py-11">
         <h1 className="font-bold pb-4 text-xl py-4 flex justify-center">Transaction</h1>
 

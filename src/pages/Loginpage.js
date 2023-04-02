@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { ToastContainer, toast } from "react-toastify";
 
 function Loginpage() {
   const { register, handleSubmit } = useForm();
@@ -22,15 +23,18 @@ function Loginpage() {
       .then((result) => {
         console.log(result);
         const username = result.existuser.firstname;
-        console.log(username);
-        // console.log(result.existuser.firstname);
         localStorage.setItem("token", "Bearer " + result.token);
-        navigate("/profile", {
-          state: username,
-        });
+        toast.success("Login Successful")
+        setTimeout(() => {
+          navigate("/profile", {
+            state: username,
+          });
+        }, 1000);
+       
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
+        toast.error("Invalid Credentials")
       });
   };
 
@@ -42,6 +46,9 @@ function Loginpage() {
     <>
       {/* <div> */}
       <Header></Header>
+      <div className="flex justify-end">
+        <ToastContainer/>
+      </div>
       {/* </div> */}
       <div className="w-full min-h-screen  bg-slate-200 flex justify-center items-center">
         <form onSubmit={handleSubmit(onSubmit)}>

@@ -1,14 +1,18 @@
 import React from "react";
 import { Navbar } from "react-daisyui";
 import { useNavigate } from "react-router-dom";
-// import { twMerge } from 'tailwind-merge'
+import { toast } from "react-toastify";
 
 function Header(props) {
   const username = props.username;
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.clear("token");
-    navigate("/");
+    toast.success("Logout Successful");
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
+    
   };
   return (
     <div className="flex justify-end items-center bg-slate-300">

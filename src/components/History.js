@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "boxicons";
 import { deleteTransaction } from "../apicalls/Transactioncalls";
 import Charts from "./Charts";
+import { toast } from "react-toastify";
 
 export default function List() {
   const [data, setData] = useState("");
@@ -18,7 +19,7 @@ export default function List() {
         return response.json();
       })
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         setData(result);
       })
       .catch((err) => {
@@ -39,6 +40,7 @@ export default function List() {
     if (!id) return 0;
 
     deleteTransaction(id);
+    toast.success("Updated successfully")
 
     setSeed(Math.random());
   };

@@ -26,15 +26,11 @@ function Charts() {
           })
           .then((result) => {
             console.log(result);
-            // data=result;
             setData(result);
-          //   navigate("/")
           })
           .catch((err) => {
             console.log(err);
           });
-  
-        // return data;
   
   }
   useEffect(() => {
