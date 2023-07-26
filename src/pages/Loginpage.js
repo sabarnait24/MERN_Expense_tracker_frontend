@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 function Loginpage() {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
+  
   const postLogin = (data) => {
     fetch("https://expense-api-7k7d.onrender.com/api/login", {
       method: "POST",
@@ -22,7 +23,7 @@ function Loginpage() {
       })
       .then((result) => {
         console.log(result);
-        const username = result.existuser.firstname;
+       const username = result.existuser.firstname;
         localStorage.setItem("token", "Bearer " + result.token);
         toast.success("Login Successful")
         setTimeout(() => {

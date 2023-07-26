@@ -29,14 +29,35 @@ const deleteTransaction = (id) => {
     })
     .then((result) => {
       console.log(result);
-      // getTransaction();
-      //   setNotes(result);
+
     })
     .catch((err) => {
       console.log(err);
     });
 };
+const getTransaction = ({setData}) => {
+  fetch("https://expense-api-7k7d.onrender.com/api/v1/transactions", {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      authorization: localStorage.getItem("token"),
+    },
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      console.log(result);
+      setData(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  // return data;
+};
 module.exports = {
   addTransaction,
   deleteTransaction,
+  getTransaction,
 };

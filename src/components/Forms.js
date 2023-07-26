@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { addTransaction } from "../apicalls/Transactioncalls";
 import { toast } from "react-toastify";
@@ -7,26 +7,24 @@ import History from "./History";
 
 export default function Form() {
   const { register, handleSubmit, resetField } = useForm();
-  const [seed, setSeed] = useState(1);
 
   const onSubmit = async (data) => {
     // console.log(data);
     if (!data) return {};
-    
+
     addTransaction(data);
-    setSeed(Math.random());
-    toast.success("Updated successfully")
-    // resetField("type");
+    toast.success("Updated successfully");
+
     resetField("amount");
     resetField("about");
   };
 
   return (
     <div className="">
-
-      
       <div className="form max-w-sm mx-auto w-96 py-11">
-        <h1 className="font-bold pb-4 text-xl py-4 flex justify-center">Transaction</h1>
+        <h1 className="font-bold pb-4 text-xl py-4 flex justify-center">
+          Transaction
+        </h1>
 
         <form id="form" onSubmit={handleSubmit(onSubmit)}>
           <div className="grid gap-4 py-4 ">
@@ -62,7 +60,7 @@ export default function Form() {
         </form>
       </div>
       <div className="mx-10 my-4">
-        <History key={seed}></History>
+        <History></History>
       </div>
     </div>
   );
