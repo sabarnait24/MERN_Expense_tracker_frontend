@@ -1,32 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { getLabels } from "../calculation/calculation";
 
-export default function Labels() {
-  const [data, setData] = useState("");
-  const getTransaction = () => {
-    fetch("https://expense-api-7k7d.onrender.com/api/v1/transactions", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        authorization: localStorage.getItem("token"),
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((result) => {
-        console.log(result);
-        setData(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+export default function Labels(props) {
+  const data = props.data;
 
-    // return data;
-  };
-  useEffect(() => {
-    getTransaction();
-  }, []);
   let Percentdata;
 
   if (!data) {

@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 
 function Header(props) {
   const username = props.username;
+  console.log(username);
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.clear("token");
@@ -12,7 +13,6 @@ function Header(props) {
     setTimeout(() => {
       navigate("/");
     }, 1000);
-    
   };
   return (
     <div className="flex justify-end items-center bg-slate-300">

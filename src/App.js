@@ -7,26 +7,6 @@ import PageNotFound from "./pages/PageNotFound";
 import Profile from "./pages/Profile";
 import Registerpage from "./pages/Registerpage";
 
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <Loginpage></Loginpage>,
-//   },
-//   {
-//     path: "/register",
-//     element: <Registerpage></Registerpage>,
-//   },
-
-//   {
-//     path: "/profile",
-//     element: <AuthorizeUser><Profile/></AuthorizeUser>
-//   },
-//   {
-//     path: "/*",
-//     element: <PageNotFound></PageNotFound>,
-//   },
-// ]);
-
 function App() {
   return (
     <BrowserRouter>

@@ -1,37 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "boxicons";
-import { deleteTransaction } from "../apicalls/Transactioncalls";
+import {
+  deleteTransaction,
+  getTransaction,
+} from "../apicalls/Transactioncalls";
 import Charts from "./Charts";
 import { toast } from "react-toastify";
 
 export default function List() {
   const [data, setData] = useState("");
-  const [seed, setSeed] = useState(1);
-  const getTransaction = () => {
-    fetch("https://expense-api-7k7d.onrender.com/api/v1/transactions", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        authorization: localStorage.getItem("token"),
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((result) => {
-        // console.log(result);
-        setData(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
 
-    // return data;
-  };
   useEffect(() => {
-    getTransaction();
-    // console.log(seed);
-  }, [seed]);
+    getTransaction({ setData });
+  }, [data]);
 
   let Transactions;
 
@@ -40,9 +21,7 @@ export default function List() {
     if (!id) return 0;
 
     deleteTransaction(id);
-    toast.success("Updated successfully")
-
-    setSeed(Math.random());
+    toast.success("Updated successfully");
   };
 
   if (!data) {
@@ -56,10 +35,12 @@ export default function List() {
   return (
     <div className="grid md:grid-cols-2">
       <div>
-        <Charts key={seed}></Charts>
+        <Charts data={data}></Charts>
       </div>
       <div className="py-6 gap-3 ">
-        <h1 className="py-4 font-bold text-xl flex justify-center items-center">History</h1>
+        <h1 className="py-4 font-bold text-xl flex justify-center items-center">
+          History
+        </h1>
         {Transactions}
       </div>
     </div>

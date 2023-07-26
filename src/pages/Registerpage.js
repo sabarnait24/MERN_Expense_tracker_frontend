@@ -10,6 +10,10 @@ function Registerpage() {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
+    if(data.password!==data.cpassword){
+      toast.error("Registration Unsuccessful");
+      return;
+    }
     fetch("https://expense-api-7k7d.onrender.com/api/register", {
       method: "POST",
       headers: {
